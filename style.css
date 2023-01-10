@@ -1,0 +1,83 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Total width: 160px
+     Total height: 80px
+     Content box width: 160px - (2 * 20px) - (2 * 8px) = 104px
+     Content box height: 80px - (2 * 20px) - (2 * 8px) = 24px */
+}
+body{
+  text-align: center;
+  background:linear-gradient(90deg,#f661fb,#ff5a5a);
+}
+.wrapper{
+  display: grid;/*网格化*/
+  margin: 200px 90px auto;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, minmax(350px, 1fr));/*三个box为一行*/
+}
+.wrapper .box{
+  width: 350px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 10000px;/*三维视图处理*/
+}
+.wrapper .box .front-face{
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  height: 220px;
+  width: 100%;
+  box-shadow: 0px 5px 20px 0px #f2f1f4;
+  transition: all 0.5s ease;
+}
+.box .front-face .icon{
+  height: 80px;
+}
+.box .front-face .icon i{
+  font-size: 65px;
+}
+.box .front-face span{
+  font-size: 22px;
+  font-weight: 600;
+}
+.box .back-face span{
+  font-size: 22px;
+  font-weight: 600;
+}
+.box .front-face .icon i{
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  -webkit-background-clip: text;
+}
+.box .front-face span{
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  -webkit-background-clip: text;
+}
+.box .back-face{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 220px;
+  width: 100%;
+  padding: 30px;
+  color: #fff;
+  opacity: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background: linear-gradient(45deg, #c850c0, #4158d0);
+  transform: translateY(120px) rotateX(90deg);/*绕x旋转，和在y轴方向上的移动*/
+  box-shadow: 0px 5px 20px 0px #f5f8fd;
+  transition: all 0.5s ease;
+}
+.box .back-face .p{
+  margin-top: 10px;
+  text-align: justify-all;
+}
+.box:hover .back-face{
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+.box:hover .front-face{/*:hover 选择器用于选择鼠标指针浮动在上面的元素。达到旋转的效果*/
+  opacity: 0;
+  transform: translateY(-120px) rotateX(100deg);/*消除front*/
+}

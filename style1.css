@@ -1,0 +1,12 @@
+
+body{
+    background-color:black
+}.ctf{
+    text-align: center;
+    top: 30px;
+    position: relative;
+}
+a {font-size: 30px;
+    color: red;
+top: 100px;
+position: relative;}
